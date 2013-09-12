@@ -117,18 +117,19 @@
    of doing this consistently.
 * Variables
 ** Single Character Variable Names
-   You should always avoid using single characters for variable
-   names. Variable names should always have longer more descriptive
-   names when they can. With a single character variable name you
-   simply do not know what it is supposed to represent. For instance
-   the names 'length', and 'width' are much more appropriate than 'l',
-   and 'w', because 'length' and 'width' actually tell you what the
-   variable is supposed to represent. If you don't know what a
-   variable is for, how are you supposed to know what to put in it,
-   and what it can be used with?
+   You should always avoid using single characters for variable names
+   when you can have a more descriptive one. With a single character
+   variable name you can not tell what it is supposed to represent
+   very easily in most cases. For instance the names 'length', and
+   'width' are much more appropriate than 'l', and 'w', because
+   'length' and 'width' actually tell you what the variable is
+   supposed to represent. If you don't know what a variable is for,
+   how are you supposed to know what to store in the variable, and
+   what calculations you can perform with the contents of the
+   variable?
 
    There are a couple of exceptions for this. For instance if you want
-   to represent a point on a Cartesian plane you probably have a
+   to represent a point on a Cartesian plane you would probably have a
    structure like the following
 
    #+BEGIN_SRC c
@@ -140,40 +141,42 @@
 
    In this case 'x' and 'y' are acceptable because they are actually
    the most descriptive names for the position on the 'x' axis, and
-   'y' axis respectively. That's just what those things are called.
+   'y' axis respectively. That's just what those things are called!
 
    Another exception (which you won't encounter too much) is when
-   things are so general that you can't actually have a specific name
-   for something because you don't know what that variable will
-   actually hold. A good example of this is something like a function
-   which solves a quadratic formula, which solves equations of the
-   form $ax^2 + bx + c = 0$, is given by
+   things are general, or abstract enough that you can't actually have
+   a specific name for something because you don't know what that
+   variable will actually hold. A good example of this is something
+   like a function for the quadratic formula, which solves for $x$ in
+   equations of the form $ax^2 + bx + c = 0$. The quadratic formula is
+   given by
 
    \[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]
 
    so, if you want to write a function to solve for $x$ you need to
    deal with the variables $a$, $b$, and $c$... But in this case they
-   don't really represent anything in particular, so you can't really
-   give them a better name than that.
+   are just numbers and are not always tied to something more
+   specific, so you can't really give them a better name than that!
 
-   If you can give something a name that tells you what it is, you
-   should. It makes it much easier to understand what's going on when
-   you have something like
+   If you can give a variable a name that tells you what it
+   represents, then you should. It makes it much easier to understand
+   what's going on when you have something like
 
    #+BEGIN_SRC c
      area = length * width;
    #+END_SRC
 
-   Instead of something like
+   As opposed to
 
    #+BEGIN_SRC c
      a = l * w;
    #+END_SRC
 
-   At a glance I know what the first one is supposed to do - but I
-   have no clue what the second one does. Maybe it calculates the area
-   of a rectangle, but maybe it finds out the number of aardvarks by
-   multiplying the amount of lemurs and wombats together.
+   At a glance you can tell exactly what the first one is doing - it's
+   an area calculation for a rectangle. The second one is a little bit
+   less obvious. Maybe it calculates the area of a rectangle, but
+   maybe it finds out the number of aardvarks by multiplying the
+   amount of lemurs and wombats together.
 ** Use Descriptive Variable Names
    Similar to the last rule, you should always try to use descriptive
    variable names. Names like "variable" are just as useless as a name
