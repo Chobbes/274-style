@@ -152,7 +152,7 @@
    have no clue what the second one does. Maybe it calculates the area
    of a rectangle, but maybe it finds out the number of aardvarks by
    multiplying the amount of lemurs and wombats together.
-** Use Descriptive Variable Names.
+** Use Descriptive Variable Names
    Similar to the last rule, you should always try to use descriptive
    variable names. Names like "variable" are just as useless as a name
    like "v". I still don't know what "variable" might represent. Make
@@ -165,6 +165,61 @@
    you do that it won't work! And often other people have to read and
    modify / use your code as well, thus it needs to be readable so
    that they don't accidentally use the wrong variables as well!
+** Global Variables
+   Global variables should generally be avoided when possible! The
+   problem with global variables is that all of your functions have
+   access to those variables and can read / write to them whenever
+   they please! This actually makes it very difficult for you to
+   ensure that the values stored in the variable are what you expect
+   for them to be, because a function call might change them without
+   you knowing.
+
+   Another disadvantage is the fact that functions can read global
+   variables. If a function can read a global variable that means its
+   output (return value) might actually depend upon some global value,
+   which makes the function much harder to reason about (it's hard to
+   know what the value of a global is, and if it changes it could make
+   your function do something completely different than what you
+   expect!). [[http://en.wikipedia.org/wiki/Pure_function][Pure functions]] are very desirable because they are much
+   easier to reason about. They can't cause any additional side
+   effects in your program, and they always have the same return
+   values for the same inputs.
+** Constants and Magic Numbers
+   As opposed to variables global constants are actually a good thing!
+   You want to avoid "/magic numbers/" in your code whenever
+   possible. A magic number is essentially any literal numerical value
+   put in your code, that could instead have a name assigned to
+   it. For example,
+
+   #+BEGIN_SRC c
+     for (size_t name_index = 0; name_index < 20; ++name_index) {
+         char *name = name_array[name_index];
+         Serial.println(name);
+     }
+   #+END_SRC
+
+   Is less readable than if you had defined somewhere in your code a
+   constant like,
+
+   #+BEGIN_SRC c
+     const size_t AMOUNT_OF_NAMES = 20;
+   #+END_SRC
+
+   and then had
+
+   #+BEGIN_SRC c
+     for (size_t name_index = 0; name_index < AMOUNT_OF_NAMES; ++name_index) {
+         char *name = name_array[name_index];
+         Serial.println(name);
+     }
+   #+END_SRC
+
+   Because you don't know what "20" represents otherwise. An
+   additional advantage of doing this is that if you have a bunch of
+   loops like this in your code, and you need to add another name you
+   can actually just change your constant in one place, instead of
+   scouring your code for all of the magic numbers that you have to
+   change, which is /very/ time consuming.
 * Comments
   Please comment your code. Tell us at a high level what exactly your
   code is doing. Don't tell us what every single line of code does,
