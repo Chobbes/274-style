@@ -153,10 +153,10 @@
 
    \[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]
 
-   so, if you want to write a function to solve for $x$ you need to
-   deal with the variables $a$, $b$, and $c$... But in this case they
-   are just numbers and are not always tied to something more
-   specific, so you can't really give them a better name than that!
+   so, if you want to solve for $x$ you need to deal with the
+   variables $a$, $b$, and $c$... But in this case they are just
+   numbers and are not always tied to something more specific, so you
+   can't really give them a better name than that!
 
    If you can give a variable a name that tells you what it
    represents, then you should. It makes it much easier to understand
