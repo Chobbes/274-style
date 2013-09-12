@@ -2,6 +2,25 @@
 #+AUTHOR: Calvin Beck
 #+OPTIONS: ^:{}
 
+* Summary
+  Quick summary of all of the things mentioned here. You should read
+  the rest for more details / the rationale behind some of this.
+
+  1. Use spaces instead of tabs for indentation.
+  2. Minimum of 4 spaces per indentation level.
+  3. Maximum of 8 spaces per indentation level.
+  4. Use the same amount of spaces per indentation level within a file!
+  5. Avoid single character variable names usually.
+  6. Use descriptive variable names when possible.
+  7. Try to avoid global variables.
+  8. Use constant variables instead of numbers like "35" in your code.
+  9. Comment your code well, but don't just reiterate what the code says
+  10. If you're not sure lean towards having more comments!
+  11. Make sure your code compiles and runs!
+  12. Use newlines to space out logically distinct pieces of your code.
+  13. Keep lines under 80 characters in length.
+  14. Be consistent within a file - don't change how you are formatting
+      your code randomly.
 * Indentation
 ** Use Spaces
    Spaces should be used for indentation instead of actual tabs. The
@@ -11,6 +30,9 @@
    computer. With a [[http://en.wikipedia.org/wiki/Monospaced_font][fixed-width font]] (which everybody should be using)
    spaces will always have the same amount of indentation relative to
    the text.
+
+   Note that the editors that we will be using (Emacs and Vim) can be
+   configured so that the tab key does indentation with spaces.
 ** Too Little Indentation
    Indentation should be a minimum of 4 spaces. Four spaces is a good
    amount of indentation, but you can probably go as high as 8 spaces
