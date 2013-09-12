@@ -1,0 +1,230 @@
+#+TITLE: Programming Style Suggestions
+#+AUTHOR: Calvin Beck
+#+OPTIONS: ^:{}
+
+* Indentation
+** Use Spaces
+   Spaces should be used for indentation instead of actual tabs. The
+   rationale for this is that tabs may display differently on
+   different computers and editors, so an amount of indentation that
+   is acceptable for you may not appear nicely on somebody else's
+   computer. With a [[http://en.wikipedia.org/wiki/Monospaced_font][fixed-width font]] (which everybody should be using)
+   spaces will always have the same amount of indentation relative to
+   the text.
+** Too Little Indentation
+   Indentation should be a minimum of 4 spaces. Four spaces is a good
+   amount of indentation, but you can probably go as high as 8 spaces
+   of indentation if you prefer more. The rationale for this is that
+   indentation is used to separate code inside of different blocks,
+   and any less indentation is more difficult to notice at a
+   glance. Too much indentation can also make things unreadable
+   because there will be too much blank space on any given line.
+
+   #+BEGIN_SRC c
+     int stuff = 0;
+     stuff++;
+     
+     if (1 == stuff) {
+         /* 4 spaces - Easier to see this is inside the if */
+         stuff++;
+     }
+     
+     if (2 == stuff) {
+       /* 2 spaces - Harder to tell */
+       stuff++;
+     }
+     
+     if (3 == stuff) {
+     /* None - Things are getting crowded now, and this is impossible */
+     stuff++;
+     }
+   #+END_SRC
+
+   And this effect is made much worse if the blocks for the if
+   statements are much larger. If it's indented by a large enough
+   amount you can tell right away what a statement is nested in. You
+   can tell if it's in a loop, or in an if statement inside of the
+   loop very easily.
+** Inconsistent Indentation
+   Of the problems with indentation, this one is probably the
+   worst. You must use a consistent amount of indentation within a
+   file. If you are indenting with 4 spaces you *always* indent by 4
+   spaces for each level of indentation. Changing the amount of
+   indentation randomly makes code *very* hard to read. Here is a bad
+   example:
+
+   #+BEGIN_SRC c
+     int stuff = 0;
+     
+          stuff++;
+        stuff += 2;
+     
+                 stuff = stuff * 7;
+     
+     if (stuff) {
+         stuff = 8;
+     }
+          else {
+        stuff = 9;
+               }
+   #+END_SRC
+
+   It's very hard to tell what goes where here, it's certainly much
+   more difficult to read than a more properly indented piece of code
+   which does the same thing:
+
+   #+BEGIN_SRC c
+     int stuff = 0;
+     
+     stuff++;
+     stuff += 2;
+     
+     stuff = stuff * 7;
+     
+     if (stuff) {
+         stuff = 8;
+     }
+     else {
+         stuff = 9;
+     }
+   #+END_SRC
+
+   We will also be using Python next term as well, and Python is picky
+   about this kind of stuff - your code likely won't work if you have
+   inconsistent indentation, so it's a good idea to get in the habit
+   of doing this consistently.
+* Variables
+** Single Character Variable Names
+   You should always avoid using single characters for variable
+   names. Variable names should always have longer more descriptive
+   names when they can. With a single character variable name you
+   simply do not know what it is supposed to represent. For instance
+   the names 'length', and 'width' are much more appropriate than 'l',
+   and 'w', because 'length' and 'width' actually tell you what the
+   variable is supposed to represent. If you don't know what a
+   variable is for, how are you supposed to know what to put in it,
+   and what it can be used with?
+
+   There are a couple of exceptions for this. For instance if you want
+   to represent a point on a Cartesian plane you probably have a
+   structure like the following
+
+   #+BEGIN_SRC c
+     typedef struct Point {
+         int x;
+         int y;
+     } Point;
+   #+END_SRC
+
+   In this case 'x' and 'y' are acceptable because they are actually
+   the most descriptive names for the position on the 'x' axis, and
+   'y' axis respectively. That's just what those things are called.
+
+   Another exception (which you won't encounter too much) is when
+   things are so general that you can't actually have a specific name
+   for something because you don't know what that variable will
+   actually hold. A good example of this is something like a function
+   which solves a quadratic formula, which solves equations of the
+   form $ax^2 + bx + c = 0$, is given by
+
+   \[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]
+
+   so, if you want to write a function to solve for $x$ you need to
+   deal with the variables $a$, $b$, and $c$... But in this case they
+   don't really represent anything in particular, so you can't really
+   give them a better name than that.
+
+   If you can give something a name that tells you what it is, you
+   should. It makes it much easier to understand what's going on when
+   you have something like
+
+   #+BEGIN_SRC c
+     area = length * width;
+   #+END_SRC
+
+   Instead of something like
+
+   #+BEGIN_SRC c
+     a = l * w;
+   #+END_SRC
+
+   At a glance I know what the first one is supposed to do - but I
+   have no clue what the second one does. Maybe it calculates the area
+   of a rectangle, but maybe it finds out the number of aardvarks by
+   multiplying the amount of lemurs and wombats together.
+** Use Descriptive Variable Names.
+   Similar to the last rule, you should always try to use descriptive
+   variable names. Names like "variable" are just as useless as a name
+   like "v". I still don't know what "variable" might represent. Make
+   your variable names reflect what you want to store in them. It's
+   just like how you should store cumin instead of rat poison in the
+   jar labeled 'cumin_jar'. Just like how you don't want to
+   accidentally poison your food (or have somebody else, unaware of
+   the rat poison, cooking in your kitchen poison their food), you
+   don't want to accidentally use the wrong values in your program. If
+   you do that it won't work! And often other people have to read and
+   modify / use your code as well, thus it needs to be readable so
+   that they don't accidentally use the wrong variables as well!
+* Comments
+  Please comment your code. Tell us at a high level what exactly your
+  code is doing. Don't tell us what every single line of code does,
+  but make sure you comment anything that might be confusing. Your
+  comments should describe what the overall goal of your code is, and
+  what the algorithm to achieve that goal is doing. This is excessive:
+
+  #+BEGIN_SRC c
+    /* Add 1 to number */
+    number = number + 1;
+  #+END_SRC
+
+  We already know that, the comment just repeats what that line of
+  code already says! The code does have a voice of its own. However,
+  you should try to comment what your code is doing - but you want to
+  be a little less verbose than that. You want to essentially explain
+  the main steps like you would if you were explaining how to do a
+  math problem to somebody, and you want to make note of anything that
+  can go wrong and anything that might be a little strange.
+
+  Almost all of the code you write should have comments of some sort!
+
+  You should have comments for your functions, for instance,
+  explaining what they do, what arguments they take, and what it
+  returns. It's also a /very/ good idea to make note of what global
+  variables and other external factors that might affect the
+  function's return values, or that the function might modify.
+* Syntax Correctness
+  Your code should compile when we get it. If your code does not
+  compile due to a syntax error, such as a forgotten semi-colon, we
+  will give you a grade of 0. Please make sure your code compiles
+  before sending it to us! It's easy to check, and if you don't know
+  why it doesn't compile try googling the error message, or coming to
+  the consultation hours!
+* Newlines
+  You should have newlines separating distinct pieces of logic in your
+  code. Some things should be grouped together, but don't be afraid to
+  put a blank line between a bunch of declarations and an if statement
+  / loop. New lines can make your code more readable, but do not put a
+  blank line between every single line of code - that defeats the
+  purpose.
+* Line Length
+  You should try to keep your lines under 80 characters in length as a
+  general rule. If it's more than 80 characters in length it's
+  probably long enough that some people will get unpredictable line
+  wrapping when they view the code which can make it very hard to
+  read.
+
+  This also has the additional benefit that if your code is more than
+  80 characters in length it is a good indicator that you should
+  probably re-factor your code a bit to make it fit under 80
+  characters. Put something in a function, or change how you are doing
+  something. It may seem like a pain at first, but it will generally
+  make your code much better.
+* Consistency
+  When you are writing code you end up making rules for how to format
+  certain things. For example, you might use 4 spaces for an
+  indentation level, or you might use all capital letters for the
+  names of constant values. If you decide to do something one way, you
+  should try to do so consistently within the file to avoid
+  confusion. There may be times when you need to make an exception,
+  but most of the time you are best left following any of the rules
+  that you have laid out for yourself.
