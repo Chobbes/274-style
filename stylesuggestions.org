@@ -62,11 +62,11 @@
      }
    #+END_SRC
 
-   And this effect is made much worse if the blocks for the if
-   statements are much larger. If it's indented by a large enough
-   amount you can tell right away what a statement is nested in. You
-   can tell if it's in a loop, or in an if statement inside of the
-   loop very easily.
+   This effect is made much worse if the blocks for the if statements
+   are much larger, or there is a lot of code around an if
+   statement. If it's indented by a large enough amount you can tell
+   right away what a statement is nested in. You can tell if it's in a
+   loop, or in an if statement inside of the loop very easily.
 ** Inconsistent Indentation
    Of the problems with indentation, this one is probably the
    worst. You must use a consistent amount of indentation within a
