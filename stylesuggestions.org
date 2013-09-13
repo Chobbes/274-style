@@ -279,6 +279,10 @@
   before sending it to us! It's easy to check, and if you don't know
   why it doesn't compile try googling the error message, or coming to
   the consultation hours!
+
+  When writing your code what you should be doing is compiling and
+  testing it often to see what's working. If you do this you should
+  never run into this problem!
 * Newlines
   You should have newlines separating distinct pieces of logic in your
   code. Some things should be grouped together, but don't be afraid to
