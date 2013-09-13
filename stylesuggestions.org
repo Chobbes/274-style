@@ -187,9 +187,14 @@
    food (or have somebody else, unaware of the rat poison, cooking in
    your kitchen poison their food). Similarly, you don't want to
    accidentally use the wrong values in your program. If you do that
-   it won't work! And often other people have to read and modify / use
+   it won't work! Often other people have to read and modify / use
    your code, so it needs to be readable to make sure they don't
    accidentally use the wrong variables as well!
+
+   To put it simply, if your variables are not named descriptively
+   then you, and the people reading / using your code, are much more
+   likely to get confused and make mistakes - which will make your
+   program not work as intended!
 ** Global Variables
    Global variables should generally be avoided when possible! The
    problem with global variables is that all of your functions have
