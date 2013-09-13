@@ -117,7 +117,7 @@
    of doing this consistently.
 * Variables
 ** Single Character Variable Names
-   You should always avoid using single characters for variable names
+   You should usually avoid using single characters for variable names
    when you can have a more descriptive one. With a single character
    variable name you can not tell what it is supposed to represent
    very easily in most cases. For instance the names 'length', and
