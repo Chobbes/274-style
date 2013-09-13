@@ -196,24 +196,93 @@
    likely to get confused and make mistakes - which will make your
    program not work as intended!
 ** Global Variables
-   Global variables should generally be avoided when possible! The
-   problem with global variables is that all of your functions have
-   access to those variables and can read / write to them whenever
-   they please! This actually makes it very difficult for you to
-   ensure that the values stored in the variable are what you expect
-   for them to be, because a function call might change them without
-   you knowing.
+   Avoid using global variables when possible. Since any function can
+   read / write to a global variable it's difficult to keep track of
+   what value is stored within the global. If a function is called you
+   have to make sure it does not change the global variable in an
+   unexpected way which might introduce bugs into your program.
 
-   Another disadvantage is the fact that functions can read global
-   variables. If a function can read a global variable that means its
-   output (return value) might actually depend upon some global value,
-   which makes the function much harder to reason about (it's hard to
-   know what the value of a global is, and if it changes it could make
-   your function do something completely different than what you
-   expect!). [[http://en.wikipedia.org/wiki/Pure_function][Pure functions]] are very desirable because they are much
-   easier to reason about. They can't cause any additional side
-   effects in your program, and they always have the same return
-   values for the same inputs.
+   If your function relies upon a global variable it is much more
+   difficult to reason about too. Consider the program
+
+   #+BEGIN_SRC c
+     #include <Arduino.h>
+     
+     /* Evil global variable! */
+     int global = 0;
+     
+     int function(int number)
+     {
+         /* Increment our global variable */
+         ++global;
+     
+         return global * number;
+     }
+     
+     void setup()
+     {
+         Serial.begin(9600);
+     
+         /* Print the result of the function a few times to show global's affects */
+         Serial.println(function(4));
+         Serial.println(function(4));
+         Serial.println(function(4));
+     
+         /* We can even change the result of the function by changing global! */
+         global = 0;
+     
+         Serial.println(function(4));
+     
+         /* Hmmmm, what's global now? I just set it to 0, right!? */
+         Serial.print("Global: ");
+         Serial.println(global);
+     }
+     
+     void loop() {}
+   #+END_SRC
+
+   You might expect calling *function(4)* to return the same result
+   every time, after all it's the same piece of code, right? Well,
+   running this program you should see
+
+   #+BEGIN_EXAMPLE
+     4
+     8
+     12
+     4
+     Global: 1
+   #+END_EXAMPLE
+
+   Because you increment *global* each time the function is called,
+   and the result of the function relies upon that external piece of
+   state (the return value is multiplied by it), we don't get the same
+   return value each time! We multiply by a slightly larger global
+   variable each time we call the function.
+
+   In more complicated functions this can be a nightmare when
+   debugging, because when you look at your function it might appear
+   like it's doing the right thing, but if a value of some global that
+   it relies upon is incorrect the return value of the function will
+   also be incorrect (even if there is nothing wrong with that
+   function!)
+
+   Also note that it can cause a bit more confusion too! For instance
+   in *setup()* we very clearly set *global* to 0, so we might think
+   that it still has that value later on. But, *global* is in fact
+   changed, it's just that the change is hidden away in the function
+   call!
+
+   It is often very desirable to have what is called a [[http://en.wikipedia.org/wiki/Pure_function][pure function]],
+   which is basically just a fancy way of saying "a function that will
+   always give you the same return values for the same inputs, and
+   does not change any variables which can be seen by anything else!"
+   Since pure functions don't cause any side effects they are a bit
+   easier to debug because you can trust that they haven't messed with
+   any other part of your program, and no other part of your program
+   can mess with it. A pure function is isolated from the rest of your
+   code, so any mistakes made in the pure function can't break
+   anything else, and mistakes made elsewhere can't break your pure
+   function! It makes them easy to test too!
 ** Constants and Magic Numbers
    As opposed to variables global constants are actually a good thing!
    You want to avoid "/magic numbers/" in your code whenever
