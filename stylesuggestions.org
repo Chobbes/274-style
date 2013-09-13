@@ -27,7 +27,7 @@
    rationale for this is that tabs may display differently on
    different computers and editors, so an amount of indentation that
    is acceptable for you may not appear nicely on somebody else's
-   computer. With a [[http://en.wikipedia.org/wiki/Monospaced_font][fixed-width font]] (which everybody should be using)
+   computer. With a [[http://en.wikipedia.org/wiki/Monospaced_font][fixed-width font]], which everybody should use,
    spaces will always have the same amount of indentation relative to
    the text.
 
@@ -275,14 +275,19 @@
 * Syntax Correctness
   Your code should compile when we get it. If your code does not
   compile due to a syntax error, such as a forgotten semi-colon, we
-  will give you a grade of 0. Please make sure your code compiles
+  will give you a grade of 0! Please make sure your code compiles
   before sending it to us! It's easy to check, and if you don't know
-  why it doesn't compile try googling the error message, or coming to
-  the consultation hours!
+  why it doesn't compile try googling the error message (don't include
+  line numbers or anything specific to your program - just the end of
+  the error message), or coming to the consultation hours! Almost
+  every compiler error message will have confused somebody else at
+  some point, and there will be an explanation for what it might mean
+  somewhere on the internet! You never make a mistake alone - somebody
+  else has made it before, and you can learn from their mistakes too!
 
   When writing your code what you should be doing is compiling and
-  testing it often to see what's working. If you do this you should
-  never run into this problem!
+  testing it often to see what's working. If you do this you will
+  guarantee that the code you send us compiles!
 * Newlines
   You should have newlines separating distinct pieces of logic in your
   code. Some things should be grouped together, but don't be afraid to
