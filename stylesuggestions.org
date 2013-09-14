@@ -20,7 +20,10 @@
   12. Use newlines to space out logically distinct pieces of your code.
   13. Keep lines under 80 characters in length.
   14. Do not use goto!
-  15. Be consistent within a file - don't change how you are formatting
+  15. Use functions when you can!
+  16. Don't write the same code twice - use functions!
+  17. Try to keep functions under a hundred lines or so!
+  18. Be consistent within a file - don't change how you are formatting
       your code randomly.
 * Indentation
 ** Use Spaces
@@ -411,6 +414,36 @@
 
   *goto* is probably the single most hated statement. It may have its
   rare uses, but you should not need it.
+* Functions
+** Use Functions!
+  Functions should be used pretty much whenever you have a group of
+  statements in your code that can be given a name. If you have a
+  group of statements that represents some kind of action as a whole -
+  for instance "find the smallest number in an array" you should group
+  that together in a function with a descriptive name. Probably
+  something like *find_smallest*. This makes your code more readable,
+  because when you have a large group of statements you can't tell at
+  a glance what they are supposed to do. However, if you see
+  *find_smallest* you know that that chunk of code probably gets you
+  the smallest number in an array or something similar to that!
+** Don't Repeat Yourself
+  Using functions has the additional benefit that if you need to do
+  this multiple times you can just call the function again instead of
+  writing the code to find the smallest number multiple times. If you
+  write the code to find the smallest number multiple times not only
+  are you doing more work than you need to, but you are also making it
+  far more likely for you to introduce a mistake in your program
+  somewhere! If you have the logic for finding the smallest number
+  packed nicely into a function then you only need to make sure that
+  the one function is correct - and if you do find a mistake when you
+  change the function you will fix the bug everywhere else in your
+  code.
+** Keep Functions Smaller
+   When you have really long functions they become really hard to
+   read, and if there is a mistake it will be much harder to find! If
+   your function is getting to be more than a hundred or so lines long
+   consider putting some of the innards of your function into another
+   function, and then calling the new function instead.
 * Consistency
   When you are writing code you end up making rules for how to format
   certain things. For example, you might use 4 spaces for an
