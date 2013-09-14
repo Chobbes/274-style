@@ -200,7 +200,8 @@
    read / write to a global variable it's difficult to keep track of
    what value is stored within the global. If a function is called you
    have to make sure it does not change the global variable in an
-   unexpected way which might introduce bugs into your program.
+   unexpected way which might introduce bugs into your program, and
+   that's really tedious!
 
    If your function relies upon a global variable it is much more
    difficult to reason about too. Consider the program
