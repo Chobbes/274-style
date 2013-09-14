@@ -83,12 +83,16 @@
      
                  stuff = stuff * 7;
      
+         while (stuff) {
+             stuff = stuff + 3;
+     
      if (stuff) {
          stuff = 8;
      }
           else {
         stuff = 9;
                }
+         }
    #+END_SRC
 
    It's very hard to tell what goes where here, it's certainly much
@@ -103,13 +107,24 @@
      
      stuff = stuff * 7;
      
-     if (stuff) {
-         stuff = 8;
-     }
-     else {
-         stuff = 9;
+     while (stuff) {
+         stuff = stuff + 3;
+     
+         if (stuff) {
+             stuff = 8;
+         }
+         else {
+             stuff = 9;
+         }
      }
    #+END_SRC
+
+   In the first case it's not really clear what is inside of the while
+   loop at first, but it is /very/ obvious in the second case. The
+   first example actually leads to a lot of mistakes! People get
+   confused thinking that the if and the else statements are not
+   inside the while loop, so their code doesn't behave how they expect
+   it to.
 
    We will also be using Python next term as well, and Python is picky
    about this kind of stuff - your code likely won't work if you have
