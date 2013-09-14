@@ -413,7 +413,8 @@
   [[http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html][Dijkstra said it best]]
 
   *goto* is probably the single most hated statement. It may have its
-  rare uses, but you should not need it.
+  rare uses, but you should not need it. If you think you need it,
+  then that's a very good sign that you should reorganize your code!
 * Functions
 ** Use Functions!
   Functions should be used pretty much whenever you have a group of
