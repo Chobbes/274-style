@@ -197,12 +197,12 @@
    maybe it finds out the number of aardvarks by multiplying the
    amount of lemurs and wombats together.
 ** Use Descriptive Variable Names
-   Similar to the last rule, you should always try to use descriptive
-   variable names. Names like "variable" are just as useless as a name
-   like "v". I still don't know what "variable" might represent. Make
-   your variable names reflect what you want to store in them. It's
-   just like how you should store cumin instead of rat poison in the
-   jar labeled 'cumin_jar'. You don't want to accidentally poison your
+   Similarly, you should always try to use descriptive variable
+   names. Names like "variable" are just as useless as a name like
+   "v". I still don't know what "variable" might represent. Make your
+   variable names reflect what you want to store in them. It's just
+   like how you should store cumin instead of rat poison in the jar
+   labeled 'cumin_jar'. You don't want to accidentally poison your
    food (or have somebody else, unaware of the rat poison, cooking in
    your kitchen poison their food). Similarly, you don't want to
    accidentally use the wrong values in your program. If you do that
