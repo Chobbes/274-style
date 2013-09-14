@@ -243,7 +243,7 @@
      {
          Serial.begin(9600);
      
-         /* Print the result of the function a few times to show global's affects */
+         /* Print the result of the function a few times to show global's effects */
          Serial.println(function(4));
          Serial.println(function(4));
          Serial.println(function(4));
