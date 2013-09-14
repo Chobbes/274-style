@@ -19,7 +19,8 @@
   11. Make sure your code compiles and runs!
   12. Use newlines to space out logically distinct pieces of your code.
   13. Keep lines under 80 characters in length.
-  14. Be consistent within a file - don't change how you are formatting
+  14. Do not use goto!
+  15. Be consistent within a file - don't change how you are formatting
       your code randomly.
 * Indentation
 ** Use Spaces
@@ -398,6 +399,17 @@
   characters. Put something in a function, or change how you are doing
   something. It may seem like a pain at first, but it will generally
   make your code much better.
+* Goto is Harmful!
+  Do not use *goto* in your code ever. Chances are if you are using it
+  you are thinking about the problem in the wrong way and are better
+  off restructuring your code. You will /not/ need it in this
+  course. It is very hard to read because you see "*goto blah;*", but
+  you have no clue where *blah* is, so it's hard to follow your
+  program.
+
+  [[http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html][Dijkstra said it best]]
+
+  [[http://en.wikipedia.org/wiki/GOTO#Criticism_and_decline][Even Wikipedia doesn't like it]]
 * Consistency
   When you are writing code you end up making rules for how to format
   certain things. For example, you might use 4 spaces for an
